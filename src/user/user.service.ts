@@ -10,6 +10,8 @@ export class UserService {
     ) {
     }
 
+    //service preko repozitorija komunicira z bazo
+
     //povezava na repositorij od baze
     async all(): Promise<User[]> {
         return  this.userRepository.find();

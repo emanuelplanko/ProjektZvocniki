@@ -36,6 +36,7 @@ export class UserController {
         return await this.userService.update(id, data);
     }
 
+    //metoda je @Delete, funcija je delete
     @Delete(':id')
     delete(@Param('id') id:number): Promise<any> {
         return this.userService.delete(id);
