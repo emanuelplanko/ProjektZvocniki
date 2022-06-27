@@ -17,6 +17,7 @@ export class UserService {
         return  this.userRepository.find();
     }
 
+    //userRepository-tukaj noter se nahaja magic typeorm
     //pošlje podatke o novo ustvarjenem userju
     create(data): Promise<User> {
         return this.userRepository.save(data);
