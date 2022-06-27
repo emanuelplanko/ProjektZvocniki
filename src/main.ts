@@ -11,6 +11,7 @@ async function bootstrap() {
     origin: 'http://localhost:3000',
     credentials: true
   })
-  await app.listen(3000);
+  // || doda default vrednost
+  await app.listen(process.env.APP_PORT || 3000);
 }
 bootstrap();
