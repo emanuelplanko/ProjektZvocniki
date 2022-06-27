@@ -12,6 +12,6 @@ async function bootstrap() {
     credentials: true
   })
   // || doda default vrednost
-  await app.listen(process.env.APP_PORT || 3000);
+  await app.listen(process.env.APP_PORT || 8080);
 }
 bootstrap();
