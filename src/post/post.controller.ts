@@ -47,7 +47,7 @@ export class PostController {
         return this.postService.create({
             title: data.title,
             content: data.content,
-            subject_id: data.subject_id,
+            subject: {id: data.subject_id},
             user: {id: user.id}
         });
 
