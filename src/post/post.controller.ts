@@ -16,7 +16,7 @@ import {PostService} from "./post.service";
 import {AuthGuard} from "../auth/auth.guard";
 import {JwtService} from "@nestjs/jwt";
 import {CreatePostDto} from "./create-post.dto";
-import {Request} from "express";
+import {Request} from 'express';
 import {UpdatePostDto} from "./update-post.dto";
 import {FileInterceptor} from "@nestjs/platform-express";
 import {diskStorage} from 'multer';
@@ -26,11 +26,11 @@ import {extname} from 'path';
 @Controller('post')
 export class PostController {
 
-    constructor(private postService:PostService,
-                private jwtService: JwtService) {
+    constructor(
+        private postService:PostService,
+        private jwtService: JwtService) {
     }
 
-    //@Get proži funkcijo getAll, ki vrača iz post.service.ts funkcijo getAll
     @Get()
     getAll () {
         return this.postService.getAll();
@@ -50,24 +50,20 @@ export class PostController {
             subject: {id: data.subject_id},
             user: {id: user.id}
         });
-
     }
-
 
     @Post('upload')
     @UseInterceptors(FileInterceptor('file',{
-    storage: diskStorage({
-        destination: './uploads',
-        filename(_,file,callback) {
-            return callback(null,file.originalname);
-        }
-    })
-
+        storage: diskStorage({
+            destination: './uploads',
+            filename(_,file,callback) {
+                return callback(null,file.originalname);
+            }
+        })
     }))
     uploadFile(@UploadedFile() file: Express.Multer.File) {
         console.log(file);
     }
-
 
     @Get(':id')
     getOne(@Param('id') id:number) {
@@ -92,7 +88,7 @@ export class PostController {
     }
 
     @Put(':id')
-   async update (
+    async update (
         @Param('id') id:number,
         @Body() data: UpdatePostDto,
         @Req() request: Request

@@ -6,11 +6,11 @@ import {Subject} from "./subject.entity";
 import {CommonModule} from "../common/common.module";
 
 @Module({
-  imports: [
-      TypeOrmModule.forFeature([Subject]),
-      CommonModule
-  ],
-  controllers: [SubjectController],
-  providers: [SubjectService]
+    imports: [
+        TypeOrmModule.forFeature([Subject]),
+        CommonModule
+    ],
+    controllers: [SubjectController],
+    providers: [SubjectService]
 })
 export class SubjectModule {}

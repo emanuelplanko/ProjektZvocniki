@@ -1,12 +1,17 @@
-import {Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm";
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+    UpdateDateColumn
+} from "typeorm";
 import {User} from "../user/user.entity";
-import {JoinColumn} from "typeorm";
 import {Subject} from "../subject/subject.entity";
 
-
-
 @Entity('posts')
- export class Post {
+export class Post {
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -22,13 +27,11 @@ import {Subject} from "../subject/subject.entity";
     @UpdateDateColumn()
     updated_at: Date;
 
-    @ManyToOne(()=>User, (user) => user.posts, {eager:true})
-    //spodaj je objekt userja, preko typeorm dobimo vse podatke o userju
+    @ManyToOne(()=>User, (user) => user.posts,{eager:true})
     @JoinColumn({name: 'user_id'})
     user: User;
 
-   @ManyToOne(()=>Subject, (subject) => subject.posts, {eager:true})
-   //spodaj je objekt userja, preko typeorm dobimo vse podatke o userju
-   @JoinColumn({name: 'subject_id'})
-   subject: Subject;
- }
+    @ManyToOne(()=>Subject, (subject) => subject.posts,{eager:true})
+    @JoinColumn({name: 'subject_id'})
+    subject: Subject;
+}

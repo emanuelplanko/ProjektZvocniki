@@ -5,17 +5,13 @@ import {JwtService} from "@nestjs/jwt";
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  //pregled če jwt obstaja in je verificiran z moje strani
-  //dostop do jwtService
   constructor(private jwtService: JwtService) {
   }
 
   canActivate(
-    context: ExecutionContext,
-    //tip "any", ne več "boolean"
+      context: ExecutionContext,
   ): any {
 
-    //za spremenljivke(const)
     try {
       const request = context.switchToHttp().getRequest();
       const jwt = request.cookies['jwt'];

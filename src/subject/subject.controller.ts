@@ -4,8 +4,6 @@ import {CreateSubjectDto} from "./create-subject.dto";
 import {UpdateSubjectDto} from "./update-subject.dto";
 
 
-
-
 @Controller('subject')
 export class SubjectController {
     constructor(private subjectService: SubjectService) {
@@ -21,24 +19,21 @@ export class SubjectController {
         return this.subjectService.create(data);
     }
 
-
     @Get(':id')
     getSubjectById(@Param('id') id: number) {
         return this.subjectService.findOne(id);
     }
 
-    //metoda za update
     @Put(':id')
     async update(
         @Param('id') id:number,
         @Body() data : UpdateSubjectDto
     )  {
-        return await this.subjectService.update(id, data);
+        return await this.subjectService.update(id,data);
     }
 
-    //metoda je @Delete, funkcija je delete
     @Delete(':id')
-    delete(@Param('id') id:number)  {
-        return this.subjectService.delete(id)
+    delete(@Param('id') id:number) {
+        return this.subjectService.delete(id);
     }
 }

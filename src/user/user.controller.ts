@@ -5,7 +5,6 @@ import {Request} from 'express';
 import {JwtService} from "@nestjs/jwt";
 import {AuthGuard} from "../auth/auth.guard";
 
-//karkoli v tem controllerju je zaščiteno s guardom
 @UseGuards(AuthGuard)
 @Controller('users')
 export class UserController {
@@ -14,14 +13,10 @@ export class UserController {
         private jwtService: JwtService) {
     }
 
-    //all je funkcija
-    //zadnji del na koncu: /
-    //pri GET je v oklepaju "users" endpoint
     @Get()
     all() {
         return this.userService.all();
     }
-
 
     @Get('profile')
     async profile(@Req() request: Request) {
@@ -32,30 +27,26 @@ export class UserController {
         return this.userService.findOne({id: data.id});
     }
 
-
-    //select Body in POSTMAN
     @Post('user')
     create (@Body() data): Promise<User> {
         return this.userService.create(data);
     }
 
     @Get(':id')
-    getUserById(@Param('id') id: number) :Promise<User> {
+    getUserById(@Param('id') id: number) : Promise<User> {
         return this.userService.findOne({id});
     }
 
-    //metoda za update
     @Put(':id')
     async update(
         @Param('id') id:number,
         @Body() data
     ) : Promise<User> {
-        return await this.userService.update(id, data);
+        return await this.userService.update(id,data);
     }
 
-    //metoda je @Delete, funkcija je delete
     @Delete(':id')
-    delete(@Param('id') id:number): Promise<any> {
+    delete(@Param('id') id:number) : Promise<any> {
         return this.userService.delete(id);
     }
 }

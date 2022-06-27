@@ -18,9 +18,6 @@ export class User {
     @Column()
     password: string;
 
-    //@OneToMany je objekt
-    //[]-pomeni array, ker jih lahko ima več
     @OneToMany(()=>Post,(post)=>post.user)
     posts: Post[];
-
 }
