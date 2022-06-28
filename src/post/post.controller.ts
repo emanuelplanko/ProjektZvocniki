@@ -70,6 +70,11 @@ export class PostController {
         return this.postService.findOne(id);
     }
 
+    @Get(':id/comments')
+    getComments(@Param('id') id:number) {
+        return this
+    }
+
     @Delete(':id')
     async delete (
         @Param('id') id:number,

@@ -9,6 +9,8 @@ import { PostModule } from './post/post.module';
 import { SubjectModule } from './subject/subject.module';
 import { ConfigModule } from '@nestjs/config';
 
+import { CommentModule } from './comment/comment.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({isGlobal: true}), // ConfigModule.forRoot({isGlobal: true})
@@ -28,6 +30,8 @@ import { ConfigModule } from '@nestjs/config';
     CommonModule,
     PostModule,
     SubjectModule,
+
+    CommentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
